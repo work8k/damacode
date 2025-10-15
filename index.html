@@ -1,4 +1,266 @@
-<!DOCTYPE html>
+<!--
+  index.html
+  Minimal, modern landing page for Dama Code / ZAM Calendar
+  - Single accent color (no pure white)
+  - Clean top tab, one-sentence status line
+  - "Our Apps" section with buttons linking to external sites
+  - Replace the href="#" values with your real app URLs
+  - All styles inline for easy single-file hosting
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dama Code — Building</title>
+
+  <!--
+    Theme: single accent color
+    - Accent: --accent
+    - Background and text avoid pure white
+  -->
+  <style>
+    /* ---------------------------
+       Variables (one color palette)
+       --------------------------- */
+    :root{
+      /* Primary accent (change this one value to adjust color) */
+      --accent: #1fb6ff; /* single accent color (teal/blue) */
+
+      /* Dark neutral background shades (no pure white used) */
+      --bg: #0b1220;       /* page background (dark) */
+      --card: #0f1724;     /* card / panel background (slightly lighter) */
+
+      /* Text colors (off-white/soft) */
+      --text: #dbeefb;     /* main text - light but not pure white */
+      --muted: #9fb9cc;    /* secondary text */
+
+      --radius: 12px;
+      --container: 1100px;
+      --gap: 20px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* ---------------------------
+       Reset + base
+       --------------------------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      min-height:100%;
+      background:linear-gradient(180deg,var(--bg),#07101a 120%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:36px 18px;
+    }
+
+    /* ---------------------------
+       Layout container
+       --------------------------- */
+    .wrap{
+      width:100%;
+      max-width:var(--container);
+    }
+
+    /* ---------------------------
+       Top tab / brand row
+       --------------------------- */
+    .top-tab{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--gap);
+      background:transparent;
+      padding:10px 14px;
+      margin-bottom:28px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:600;
+      letter-spacing:0.02em;
+      font-size:0.95rem;
+    }
+
+    /* Accent dot next to brand to keep single color theme */
+    .brand-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 6px 18px rgba(31,182,255,0.12);
+      flex:0 0 12px;
+    }
+
+    /* Minimal nav placeholder (kept empty on purpose) */
+    .nav-placeholder{
+      font-size:0.9rem;
+      color:var(--muted);
+      opacity:0.95;
+    }
+
+    /* ---------------------------
+       Main card / content
+       --------------------------- */
+    .card{
+      background:linear-gradient(180deg,var(--card), #091222 120%);
+      border-radius:16px;
+      padding:36px;
+      box-shadow:0 12px 40px rgba(4,8,12,0.6);
+      width:100%;
+    }
+
+    /* Status sentence */
+    .status{
+      font-size:1.25rem;
+      color:var(--text);
+      margin-bottom:18px;
+      font-weight:600;
+    }
+
+    .sub{
+      color:var(--muted);
+      margin-bottom:28px;
+      max-width:70ch;
+      font-weight:500;
+    }
+
+    /* Our apps grid */
+    .apps{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:16px;
+      align-items:start;
+    }
+
+    /* Button style: uses only accent and neutrals */
+    .app-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent), color-mix(in srgb, var(--accent) 70%, black 20%));
+      color:#042230; /* dark text on accent */
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:0 8px 24px rgba(31,182,255,0.08);
+      transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      min-height:54px;
+      text-align:center;
+    }
+
+    .app-btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(31,182,255,0.14);
+      opacity:0.98;
+    }
+
+    /* App label (small descriptor under name) */
+    .app-meta{
+      display:block;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:0.88rem;
+      font-weight:600;
+    }
+
+    /* Footer small note */
+    .foot-note{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:0.85rem;
+      text-align:center;
+    }
+
+    /* ---------------------------
+       Responsive tweaks
+       --------------------------- */
+    @media (max-width:720px){
+      body{padding:20px}
+      .card{padding:20px}
+      .status{font-size:1.05rem}
+    }
+  </style>
+</head>
+<body>
+  <!-- Single-file minimal page -->
+  <div class="wrap">
+
+    <!-- Top tab / brand -->
+    <header class="top-tab" role="banner">
+      <!-- Brand: small dot + name -->
+      <a class="brand" href="index.html" aria-label="Dama Code home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Dama Code</span>
+      </a>
+
+      <!-- intentionally minimal: no extra links -->
+      <div class="nav-placeholder" aria-hidden="true">Building modern tools</div>
+    </header>
+
+    <!-- Primary card -->
+    <main class="card" role="main" aria-labelledby="status-title">
+      <!-- One-sentence status -->
+      <h1 id="status-title" class="status">We’re building something great.</h1>
+
+      <!-- Short secondary line -->
+      <p class="sub">Below are our apps and projects. Click an item to visit the live site or download page.</p>
+
+      <!-- Our Apps grid -->
+      <section class="apps" aria-label="Our apps">
+        <!--
+          Replace each href="#" with the real external URL.
+          Each button opens in a new tab (target="_blank") and uses rel for security.
+        -->
+        <a class="app-btn" href="#" target="_blank" rel="noopener">
+          ZAM Calendar
+          <span class="app-meta">Calendar & scheduling</span>
+        </a>
+
+        <a class="app-btn" href="#" target="_blank" rel="noopener">
+          Shift Manager
+          <span class="app-meta">Manage employee shifts</span>
+        </a>
+
+        <a class="app-btn" href="#" target="_blank" rel="noopener">
+          Team Planner
+          <span class="app-meta">Coordination & events</span>
+        </a>
+
+        <a class="app-btn" href="#" target="_blank" rel="noopener">
+          Integrations
+          <span class="app-meta">Connect calendars & tools</span>
+        </a>
+      </section>
+
+      <!-- small footer note -->
+      <div class="foot-note">© <span id="year"></span> Dama Code — All rights reserved.</div>
+    </main>
+  </div>
+
+  <!-- Minimal JS: only sets year dynamically -->
+  <script>
+    // Set current year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -211,4 +473,4 @@
         <p class="copyright">&copy; 2025 Dama Code - All Rights Reserved.</p>
     </footer>
 </body>
-</html>
+</html> -->
