@@ -1,25 +1,43 @@
+<!--
+  index.html
+  Dama Code - ZAM Calendar
+  NOTE: Privacy page references removed as requested.
+  - Removed the "Privacy Policy" nav link and any references to privacy.html
+  - This is the full single-file template. Save and overwrite your existing index.html
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Basic meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dama Code - ZAM Calendar</title>
+
+    <!--
+      Styles
+      - All CSS kept inline for a single-file static page.
+      - Comment lines included for clarity.
+    -->
     <style>
+        /* Reset + box sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        /* Page base */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
+            /* Background gradient */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-        
-        /* Navigation */
+
+        /* Navigation styles */
         nav {
             background: rgba(255, 255, 255, 0.95);
             padding: 20px 0;
@@ -28,47 +46,47 @@
             top: 0;
             z-index: 100;
         }
-        
-        nav .container {
+
+        /* Constrain width for content areas */
+        nav .container,
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        
+
+        /* Logo */
         .logo {
             font-size: 1.5em;
             font-weight: bold;
             color: #667eea;
             text-decoration: none;
         }
-        
+
+        /* Navigation links */
         .nav-links {
             display: flex;
             gap: 30px;
             list-style: none;
         }
-        
+
         .nav-links a {
             color: #555;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+
         .nav-links a:hover {
             color: #667eea;
         }
-        
-        /* Main Content */
+
+        /* Main container spacing */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 80px 20px;
         }
-        
+
+        /* Hero */
         .hero {
             text-align: center;
             background: white;
@@ -77,13 +95,13 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             margin-bottom: 60px;
         }
-        
+
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
             color: #667eea;
         }
-        
+
         .subtitle {
             font-size: 1.3em;
             color: #666;
@@ -92,7 +110,8 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
+        /* Primary CTA button */
         .cta-button {
             display: inline-block;
             padding: 18px 40px;
@@ -104,20 +123,20 @@
             border-radius: 10px;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        
+
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
         }
-        
-        /* Features Section */
+
+        /* Features grid */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 60px;
         }
-        
+
         .feature {
             background: white;
             padding: 40px 30px;
@@ -125,22 +144,22 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .feature-icon {
             font-size: 3em;
             margin-bottom: 20px;
         }
-        
+
         .feature h3 {
             color: #667eea;
             margin-bottom: 15px;
             font-size: 1.3em;
         }
-        
+
         .feature p {
             color: #666;
         }
-        
+
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.2);
@@ -149,22 +168,23 @@
             padding: 40px 20px;
             margin-top: 80px;
         }
-        
+
         footer .company-info {
             margin-top: 20px;
             font-size: 0.9em;
             opacity: 0.9;
         }
-        
+
+        /* Responsive tweaks */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
             }
-            
+
             .hero {
                 padding: 60px 30px;
             }
-            
+
             .nav-links {
                 gap: 15px;
                 font-size: 0.9em;
@@ -173,52 +193,74 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!--
+      Navigation
+      - Privacy Policy link removed as requested.
+      - If you later want multiple nav items, add <li><a ...></a></li> here.
+    -->
     <nav>
-        <div class="container">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <!-- Logo / home link -->
             <a href="index.html" class="logo">Dama Code</a>
-            <ul class="nav-links">
+
+            <!--
+              NOTE: Privacy link removed.
+              Kept only the Home link to avoid references to privacy.html.
+            -->
+            <ul class="nav-links" style="display:flex; align-items:center;">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
+
+    <!-- Main content -->
     <div class="container">
+        <!-- Hero Section -->
         <div class="hero">
             <h1>ZAM Calendar</h1>
-            <p class="subtitle">Simplify scheduling by uniting work shifts, your company calendar, national and school holidays, and personal events into one seamless experience.</p>
+            <p class="subtitle">
+                Simplify scheduling by uniting work shifts, your company calendar, national and school holidays,
+                and personal events into one seamless experience.
+            </p>
+            <!-- CTA: replace href with real onboarding/install link -->
             <a href="#" class="cta-button">Get Started</a>
         </div>
-        
+
         <!-- Features -->
         <div class="features">
+            <!-- Feature: Work Shifts -->
             <div class="feature">
                 <div class="feature-icon">📅</div>
                 <h3>Work Shifts</h3>
-                <p>Manage and track all your work shifts in one convenient location</p>
+                <p>Manage and track all your work shifts in one convenient location.</p>
             </div>
+
+            <!-- Feature: Company Calendar -->
             <div class="feature">
                 <div class="feature-icon">🏢</div>
                 <h3>Company Calendar</h3>
-                <p>Stay synchronized with your company's events and important dates</p>
+                <p>Stay synchronized with your company's events and important dates.</p>
             </div>
+
+            <!-- Feature: Holidays -->
             <div class="feature">
                 <div class="feature-icon">🎉</div>
                 <h3>Holidays</h3>
-                <p>National and school holidays automatically integrated into your schedule</p>
+                <p>National and school holidays automatically integrated into your schedule.</p>
             </div>
+
+            <!-- Feature: Personal Events -->
             <div class="feature">
                 <div class="feature-icon">✨</div>
                 <h3>Personal Events</h3>
-                <p>Keep track of your personal commitments alongside work obligations</p>
+                <p>Keep track of your personal commitments alongside work obligations.</p>
             </div>
         </div>
     </div>
-    
+
     <!-- Footer -->
     <footer>
+        <!-- Company / address info -->
         <p><strong>Dama Code For Information Technology</strong></p>
         <div class="company-info">
             <p>Jubail, Eastern Province, 35513, Saudi Arabia</p>
