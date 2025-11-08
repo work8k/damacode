@@ -47,11 +47,49 @@
             padding: 0 40px;
         }
 
+        /* This wrapper lets us flip logo/switcher left/right */
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .logo {
-            font-size: 1.5em;
+            font-size: 1.5em;        /* original font size kept */
             font-weight: 600;
             color: #ffffff;
             text-decoration: none;
+        }
+
+        /* Language Switcher (now inside the nav, right in EN, left in AR) */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            background: transparent;
+            color: #9ca3af;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .lang-btn.active {
+            background: transparent;
+            text-decoration: underline; /* underline for selected language */
         }
 
         /* Main container */
@@ -202,6 +240,10 @@
                 padding: 80px 20px;
             }
 
+            nav .container {
+                padding: 0 20px;
+            }
+
             h1 {
                 font-size: 2.8em;
             }
@@ -210,7 +252,6 @@
                 font-size: 1.2em;
             }
 
-            /* Make cards auto-height on mobile to avoid text clipping */
             .apps-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 max-width: 500px;
@@ -232,8 +273,14 @@
                 font-size: 0.85em;
             }
 
-            nav .container {
-                padding: 0 20px;
+            .lang-switcher {
+                padding: 6px;
+            }
+
+            .lang-btn {
+                padding: 3px 8px;
+                font-size: 0.7em;
+                border-radius: 4px;
             }
         }
     </style>
@@ -242,7 +289,16 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="/" class="logo">Dama Code</a>
+            <div class="nav-content">
+                <!-- Logo (stays same size, side flips with language) -->
+                <a href="/" class="logo" data-translate="logo">Dama Code</a>
+
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="ar">العربية</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -250,38 +306,148 @@
     <div class="container">
         <!-- Hero -->
         <div class="hero">
-            <h1>Building <span class="highlight">Better</span> Tools</h1>
-            <p class="tagline">We create simple, powerful applications for everyday use</p>
+            <h1>
+                <span data-translate="heroPre">Building</span>
+                &nbsp;
+                <span class="highlight" data-translate="heroHighlight">Better</span>
+                &nbsp;
+                <span data-translate="heroPost">Apps</span>
+            </h1>
+            <p class="tagline" data-translate="tagline">
+                We create simple, powerful applications for everyday use
+            </p>
         </div>
 
         <!-- Apps Section -->
-        <h2 class="section-title">Our Apps</h2>
+        <h2 class="section-title" data-translate="sectionTitle">Our Apps</h2>
         <div class="apps-grid">
-            
             <!-- App 1: ZAM Calendar -->
             <a href="https://zamcalendar.com" class="app-card">
                 <div class="app-icon">📅</div>
-                <h3>ZAM Calendar</h3>
-                <p>All-in-one scheduling</p>
+                <h3 data-translate="app1Name">ZAM Calendar</h3>
+                <p data-translate="app1Desc">All-in-one scheduling</p>
             </a>
 
             <!-- App 2: Placeholder -->
             <a href="#" class="app-card placeholder">
                 <div class="app-icon">📱</div>
-                <h3>Coming Soon</h3>
-                <p>New app</p>
+                <h3 data-translate="app2Name">Coming Soon</h3>
+                <p data-translate="app2Desc">New app</p>
             </a>
-
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p><strong>Dama Code For Information Technology</strong></p>
-        <p>Jubail, Eastern Province, 35513, Saudi Arabia</p>
-        <p>Saudi Business Center Authentication Number# 0000155228</p>
-        <p>info@damacode.com</p>
-        <p class="copyright">&copy; 2025 Dama Code - All Rights Reserved.</p>
+        <p>
+            <strong data-translate="footerLine1">
+                Dama Code For Information Technology
+            </strong>
+        </p>
+        <p data-translate="footerLine2">
+            Jubail, Eastern Province, 35513, Saudi Arabia
+        </p>
+        <p data-translate="footerLine3">
+            Saudi Business Center Authentication Number# 0000155228
+        </p>
+        <p data-translate="footerLine4">
+            info@damacode.com
+        </p>
+        <p class="copyright" data-translate="footerLine5">
+            © 2025 Dama Code - All Rights Reserved.
+        </p>
     </footer>
+
+    <script>
+        // Translations for English and Arabic
+        const translations = {
+            en: {
+                logo: "Dama Code",
+                heroPre: "Building",
+                heroHighlight: "Better",
+                heroPost: "Tools",
+                tagline: "We create simple, powerful applications for everyday use",
+                sectionTitle: "Our Apps",
+                app1Name: "ZAM Calendar",
+                app1Desc: "All-in-one scheduling",
+                app2Name: "Coming Soon",
+                app2Desc: "New app",
+                footerLine1: "Dama Code For Information Technology",
+                footerLine2: "Jubail, Eastern Province, 35513, Saudi Arabia",
+                footerLine3: "Saudi Business Center Authentication Number# 0000155228",
+                footerLine4: "info@damacode.com",
+                footerLine5: "© 2025 Dama Code - All Rights Reserved."
+            },
+            ar: {
+                logo: "Dama Code",
+                heroPre: "نطوّر",
+                heroHighlight: "تطبيقات",
+                heroPost: "أكثر تميّزاً",
+                tagline: "نطّور تطبيقات عمليّة تناسب حياتك اليوميّة",
+                sectionTitle: "تطبيقاتنا",
+                app1Name: "تقويم زام",
+                app1Desc: "كل ما تحتاجه لتنظيم جدولك",
+                app2Name: "قريباً",
+                app2Desc: "تطبيق جديد",
+                footerLine1: "شركة داما كود لتقنية المعلومات",
+                footerLine2: "الجبيل - المنطقة الشرقية - المملكة العربية السعودية",
+                footerLine3: "رقم توثيق المركز السعودي للأعمال # 0000155228",
+                footerLine4: "info@damacode.com",
+                footerLine5: "© 2025 شركة داما كود - جميع الحقوق محفوظة."
+            }
+        };
+
+        // Use same language key as other page
+        let currentLang = localStorage.getItem('language') || 'en';
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+
+            // html lang + direction
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            // Flip header: EN -> logo left, switcher right
+            //              AR -> logo right, switcher left
+            const navContent = document.querySelector('.nav-content');
+            if (navContent) {
+                navContent.style.flexDirection = (lang === 'ar') ? 'row-reverse' : 'row';
+            }
+
+            // Update texts
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                const value = translations[lang][key];
+                if (value !== undefined) {
+                    el.textContent = value;
+                }
+            });
+
+            // Active state on buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Init
+        applyLanguage(currentLang);
+
+        // Button click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                applyLanguage(lang);
+            });
+        });
+
+        // On resize, just re-apply to keep direction and header layout consistent
+        window.addEventListener('resize', () => {
+            applyLanguage(currentLang);
+        });
+    </script>
 </body>
 </html>
