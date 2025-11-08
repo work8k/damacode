@@ -55,13 +55,13 @@
         }
 
         .logo {
-            font-size: 1.5em;        /* original font size kept */
+            font-size: 1.5em;          /* original font size kept */
             font-weight: 600;
             color: #ffffff;
             text-decoration: none;
         }
 
-        /* Language Switcher (now inside the nav, right in EN, left in AR) */
+        /* Language Switcher */
         .lang-switcher {
             display: flex;
             gap: 8px;
@@ -142,6 +142,12 @@
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 3px;
+        }
+
+        /* FIX: Better Arabic rendering (no big spacing / uppercase) */
+        body.lang-ar .section-title {
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         .apps-grid {
@@ -290,7 +296,7 @@
     <nav>
         <div class="container">
             <div class="nav-content">
-                <!-- Logo (stays same size, side flips with language) -->
+                <!-- Logo -->
                 <a href="/" class="logo" data-translate="logo">Dama Code</a>
 
                 <!-- Language Switcher -->
@@ -311,7 +317,7 @@
                 &nbsp;
                 <span class="highlight" data-translate="heroHighlight">Better</span>
                 &nbsp;
-                <span data-translate="heroPost">Apps</span>
+                <span data-translate="heroPost">Tools</span>
             </h1>
             <p class="tagline" data-translate="tagline">
                 We create simple, powerful applications for everyday use
@@ -379,11 +385,11 @@
                 footerLine5: "© 2025 Dama Code - All Rights Reserved."
             },
             ar: {
-                logo: "Dama Code",
-                heroPre: "نطوّر",
-                heroHighlight: "تطبيقات",
-                heroPost: "أكثر تميّزاً",
-                tagline: "نطّور تطبيقات عمليّة تناسب حياتك اليوميّة",
+                logo: "داما كود",
+                heroPre: "نبني",
+                heroHighlight: "أدوات",
+                heroPost: "أفضل",
+                tagline: "نطوّر تطبيقات بسيطة وقوية لحياتك اليومية",
                 sectionTitle: "تطبيقاتنا",
                 app1Name: "تقويم زام",
                 app1Desc: "كل ما تحتاجه لتنظيم جدولك",
@@ -407,6 +413,9 @@
             // html lang + direction
             document.documentElement.lang = lang;
             document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            // Body class for Arabic-specific tweaks (like section title spacing)
+            document.body.classList.toggle('lang-ar', lang === 'ar');
 
             // Flip header: EN -> logo left, switcher right
             //              AR -> logo right, switcher left
@@ -444,7 +453,7 @@
             });
         });
 
-        // On resize, just re-apply to keep direction and header layout consistent
+        // On resize, re-apply to keep layout consistent
         window.addEventListener('resize', () => {
             applyLanguage(currentLang);
         });
