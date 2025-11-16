@@ -202,6 +202,15 @@
             filter: drop-shadow(0 4px 8px rgba(168, 85, 247, 0.3));
         }
 
+        /* Support image icons inside app cards */
+        .app-icon img {
+            width: 72px;
+            height: 72px;
+            display: block;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
         .app-card h3 {
             font-size: 1.1em;
             color: #ffffff;
@@ -334,11 +343,13 @@
                 <p data-translate="app1Desc">All-in-one scheduling</p>
             </a>
 
-            <!-- App 2: Placeholder -->
-            <a href="#" class="app-card placeholder">
-                <div class="app-icon">📱</div>
-                <h3 data-translate="app2Name">Coming Soon</h3>
-                <p data-translate="app2Desc">New app</p>
+            <!-- App 2: LocaShare -->
+            <a href="https://locashare.app" class="app-card" rel="noopener noreferrer">
+                <div class="app-icon">
+                    <img src="assets/locashareicon.png" alt="LocaShare icon" />
+                </div>
+                <h3 data-translate="app2Name">LocaShare</h3>
+                <p data-translate="app2Desc">Smart Location Sharing</p>
             </a>
         </div>
     </div>
@@ -375,9 +386,9 @@
                 tagline: "We create simple, powerful applications for everyday use",
                 sectionTitle: "Our Apps",
                 app1Name: "ZAM Calendar",
-                app1Desc: "All-in-one scheduling",
-                app2Name: "Coming Soon",
-                app2Desc: "New app",
+                app1Desc: "Shift Calendar",
+                app2Name: "LocaShare",
+                app2Desc: "Smart Location Sharing",
                 footerLine1: "Dama Code For Information Technology",
                 footerLine2: "Jubail, Eastern Province, 35513, Saudi Arabia",
                 footerLine3: "Saudi Business Center Authentication Number# 0000155228",
@@ -393,8 +404,8 @@
                 sectionTitle: "تطبيقاتنا",
                 app1Name: "تقويم زام",
                 app1Desc: "لتنظيم جدول الشفت",
-                app2Name: "قريباً",
-                app2Desc: "تطبيق جديد",
+                app2Name: "LocaShare",
+                app2Desc: "مشاركة العنوان بلمسة واحدة",
                 footerLine1: "شركة داما كود لتقنية المعلومات",
                 footerLine2: "الجبيل - المنطقة الشرقية - المملكة العربية السعودية",
                 footerLine3: "رقم توثيق المركز السعودي للأعمال # 0000155228",
